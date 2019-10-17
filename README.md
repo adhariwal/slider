@@ -1,5 +1,14 @@
 # slider
 slider JavaScript
+
+Three files there 
+1) index.html
+2) index.html
+3) style.css
+one folder for images (img).
+
+
+
 var Data = [{
     "Image": "img/slider1.jpg",
     "Text": "slider One",
