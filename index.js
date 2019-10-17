@@ -64,16 +64,24 @@ class Slider {
             Bullet.id = j + 1;
             BulletContainer.appendChild(Bullet);
         }
+
         var PreviousArrow = document.createElement("a");
         PreviousArrow.id = 'PreviousArrow';
         PreviousArrow.text = '❮';
+        if (Data.length <= 1) {
+            PreviousArrow.style.display = 'none';
+        }
         MainContainer.appendChild(PreviousArrow);
         var NextArrow = document.createElement("a");
         NextArrow.id = 'NextArrow';
         NextArrow.text = '❯';
+        if (Data.length <= 1) {
+            NextArrow.style.display = 'none';
+        }
         MainContainer.appendChild(NextArrow);
         slides = document.getElementsByClassName("Block");
         bullets = document.getElementsByClassName("Bullet");
+
 
     }
     NextAndPreviousSlide(PlusAndMinusOne) { // function to change slider +1 or -1 from current slider
@@ -98,7 +106,5 @@ class Slider {
         bullets[CurrentSlider - 1].className += " active";
     }
 }
-
-
 var Sliders = new Slider(); //class call
 Sliders.OnPageLoad();
