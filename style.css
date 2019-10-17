@@ -99,18 +99,14 @@
      height: 15px;
      width: 15px;
      margin: 0 2px;
-     background-color: #bbb;
+     background-color: #fff;
      border-radius: 50%;
      display: inline-block;
  }
  
  .active,
  .Bullet:hover {
-     background-color: #717171;
- }
- 
- html {
-     overflow: hidden;
+     background-color: #000000;
  }
  
  @media only screen and (max-width: 300px) {
