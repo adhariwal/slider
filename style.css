@@ -1,0 +1,148 @@
+ * {
+     box-sizing: border-box
+ }
+ 
+ body {
+     margin: 0px;
+ }
+ /* Main container of index page */
+ 
+ .MainContainer {
+     position: relative;
+     margin: auto;
+     width: 100%;
+ }
+ /* Bullet container of slider */
+ 
+ .BulletContainer {
+     position: absolute;
+     bottom: 10px;
+     left: 50%;
+     text-align: center;
+     z-index: 9999;
+ }
+ /* Blocks of slider */
+ 
+ .Block {
+     display: none;
+     /* Add default value display none */
+     -webkit-animation-duration: 2s;
+     animation-name: MoveSlider;
+     animation-duration: 2s;
+ }
+ /* Opacity animation for chrome and safari */
+ 
+ @-webkit-keyframes MoveSlider {
+     from {
+         opacity: .5
+     }
+     to {
+         opacity: 1
+     }
+ }
+ /* Opacity animation for other browser */
+ 
+ @keyframes MoveSlider {
+     from {
+         opacity: .5
+     }
+     to {
+         opacity: 1
+     }
+ }
+ 
+ .Image {
+     width: 100%;
+ }
+ 
+ #PreviousArrow,
+ #NextArrow {
+     cursor: pointer;
+     position: absolute;
+     top: 50%;
+     width: auto;
+     padding: 15px;
+     margin-top: -21px;
+     color: white;
+     font-weight: bold;
+     font-size: 20px;
+     transition: 0.6s ease;
+     border-radius: 0 3px 3px 0;
+     user-select: none;
+ }
+ 
+ #NextArrow {
+     right: 0;
+     border-radius: 3px 0 0 3px;
+ }
+ /* Next & previous buttons */
+ 
+ #PreviousArrow:hover,
+ #NextArrow:hover {
+     background-color: rgba(0, 0, 0, 0.8);
+ }
+ 
+ .TextOnImage {
+     color: #ffffff;
+     font-size: 20px;
+     padding: 9px 11px;
+     position: absolute;
+     top: 48%;
+     width: 100%;
+     text-align: center;
+     font-weight: bold;
+ }
+ /* The bullets or indicators */
+ 
+ .Bullet {
+     cursor: pointer;
+     height: 15px;
+     width: 15px;
+     margin: 0 2px;
+     background-color: #bbb;
+     border-radius: 50%;
+     display: inline-block;
+ }
+ 
+ .active,
+ .Bullet:hover {
+     background-color: #717171;
+ }
+ 
+ html {
+     overflow: hidden;
+ }
+ 
+ @media only screen and (max-width: 300px) {
+     #PreviousArrow,
+     #NextArrow {
+         font-size: 13px;
+     }
+     .TextOnImage {
+         font-size: 12px;
+         top: 39%;
+     }
+     .BulletContainer {
+         left: 39%;
+     }
+ }
+ 
+ @media only screen and (min-width: 300px) and (max-width: 500px) {
+     .TextOnImage {
+         font-size: 15px;
+         top: 42%;
+     }
+     .BulletContainer {
+         left: 42%;
+     }
+ }
+ 
+ @media only screen and (min-width: 500px) and (max-width: 900px) {
+     .TextOnImage {
+         font-size: 18px;
+         top: 46%;
+     }
+     .BulletContainer {
+         left: 46%;
+     }
+ }
