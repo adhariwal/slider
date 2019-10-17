@@ -15,82 +15,87 @@ var Data = [{
     "Text": "slider four",
 }]
 class Slider {
-    OnPageLoad() { // function which run on load of the page 
-        Sliders.CreateHtml();
-        Sliders.ChangeSlide(CurrentSlider);
-        document.body.addEventListener("keyup", function(event) {
-            if (event.keyCode === 37) {
-                // 37 is left key value
+    // function which run on load of the page 
+    OnPageLoad() {
+            Sliders.CreateHtml();
+            Sliders.ChangeSlide(CurrentSlider);
+            document.body.addEventListener("keyup", function(event) {
+                if (event.keyCode === 37) {
+                    // 37 is left key value
+                    Sliders.NextAndPreviousSlide(-1);
+                } else if (event.keyCode === 39) {
+                    // 39 is right key value
+                    Sliders.NextAndPreviousSlide(1);
+                }
+            });
+            // Perform action onclick
+            document.getElementById('PreviousArrow').addEventListener("click", function() {
                 Sliders.NextAndPreviousSlide(-1);
-            } else if (event.keyCode === 39) {
-                // 39 is right key value
+            });
+            document.getElementById('NextArrow').addEventListener("click", function() {
                 Sliders.NextAndPreviousSlide(1);
+            });
+            var classname = document.getElementsByClassName("Bullet");
+            for (var i = 0; i < classname.length; i++) {
+                classname[i].addEventListener('click', function() {
+                    var id = Math.round(this.id);
+                    Sliders.MoveToSlide(id);
+                }, false);
             }
-        });
-        // Perform action onclick
-        document.getElementById('PreviousArrow').addEventListener("click", function() {
-            Sliders.NextAndPreviousSlide(-1);
-        });
-        document.getElementById('NextArrow').addEventListener("click", function() {
-            Sliders.NextAndPreviousSlide(1);
-        });
-        var classname = document.getElementsByClassName("Bullet");
-        for (var i = 0; i < classname.length; i++) {
-            classname[i].addEventListener('click', function() {
-                var id = Math.round(this.id);
-                Sliders.MoveToSlide(id);
-            }, false);
         }
-    }
-    CreateHtml() { // function to Create HTML using javascript
-        var MainContainer = document.getElementById('MainContainer');
-        var BulletContainer = document.getElementById('BulletContainer');
-        for (var j = 0; j < Data.length; j++) {
-            var Block = document.createElement("div");
-            Block.className = 'Block';
-            var img = document.createElement("img");
-            img.src = Data[j].Image;
-            img.className = 'Image';
-            img.alt = Data[j].Text;
-            var Text = document.createElement("div");
-            Text.className = 'TextOnImage';
-            var TextData = document.createTextNode(Data[j].Text);
-            Text.appendChild(TextData);
-            Block.appendChild(img);
-            Block.appendChild(Text);
-            MainContainer.appendChild(Block);
-            var Bullet = document.createElement("div");
-            Bullet.className = 'Bullet';
-            Bullet.id = j + 1;
-            BulletContainer.appendChild(Bullet);
-        }
+        // function to Create HTML using javascript
+    CreateHtml() {
+            var MainContainer = document.getElementById('MainContainer');
+            var BulletContainer = document.getElementById('BulletContainer');
+            for (var j = 0; j < Data.length; j++) {
+                var Block = document.createElement("div");
+                Block.className = 'Block';
+                var img = document.createElement("img");
+                img.src = Data[j].Image;
+                img.className = 'Image';
+                img.alt = Data[j].Text;
+                var Text = document.createElement("div");
+                Text.className = 'TextOnImage';
+                var TextData = document.createTextNode(Data[j].Text);
+                Text.appendChild(TextData);
+                Block.appendChild(img);
+                Block.appendChild(Text);
+                MainContainer.appendChild(Block);
+                var Bullet = document.createElement("div");
+                Bullet.className = 'Bullet';
+                Bullet.id = j + 1;
+                BulletContainer.appendChild(Bullet);
+            }
 
-        var PreviousArrow = document.createElement("a");
-        PreviousArrow.id = 'PreviousArrow';
-        PreviousArrow.text = '❮';
-        if (Data.length <= 1) {
-            PreviousArrow.style.display = 'none';
-        }
-        MainContainer.appendChild(PreviousArrow);
-        var NextArrow = document.createElement("a");
-        NextArrow.id = 'NextArrow';
-        NextArrow.text = '❯';
-        if (Data.length <= 1) {
-            NextArrow.style.display = 'none';
-        }
-        MainContainer.appendChild(NextArrow);
-        slides = document.getElementsByClassName("Block");
-        bullets = document.getElementsByClassName("Bullet");
+            var PreviousArrow = document.createElement("a");
+            PreviousArrow.id = 'PreviousArrow';
+            PreviousArrow.text = '❮';
+            if (Data.length <= 1) {
+                PreviousArrow.style.display = 'none';
+            }
+            MainContainer.appendChild(PreviousArrow);
+            var NextArrow = document.createElement("a");
+            NextArrow.id = 'NextArrow';
+            NextArrow.text = '❯';
+            if (Data.length <= 1) {
+                NextArrow.style.display = 'none';
+            }
+            MainContainer.appendChild(NextArrow);
+            slides = document.getElementsByClassName("Block");
+            bullets = document.getElementsByClassName("Bullet");
 
 
-    }
-    NextAndPreviousSlide(PlusAndMinusOne) { // function to change slider +1 or -1 from current slider
-        this.ChangeSlide(CurrentSlider += PlusAndMinusOne);
-    }
-    MoveToSlide(SlideNumber) { // function to go to slider by number
-        this.ChangeSlide(CurrentSlider = SlideNumber);
-    }
-    ChangeSlide(SlideNumber) { // Main function which change slider by adding active class
+        }
+        // function to change slider +1 or -1 from current slider
+    NextAndPreviousSlide(PlusAndMinusOne) {
+            this.ChangeSlide(CurrentSlider += PlusAndMinusOne);
+        }
+        // function to go to slider by number
+    MoveToSlide(SlideNumber) {
+            this.ChangeSlide(CurrentSlider = SlideNumber);
+        }
+        // Main function which change slider by adding active class
+    ChangeSlide(SlideNumber) {
         if (SlideNumber > slides.length) {
             CurrentSlider = 1;
         } else if (SlideNumber < 1) {
@@ -106,5 +111,7 @@ class Slider {
         bullets[CurrentSlider - 1].className += " active";
     }
 }
-var Sliders = new Slider(); //class call
+//class call
+var Sliders = new Slider();
+//call onload function
 Sliders.OnPageLoad();
