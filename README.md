@@ -7,7 +7,7 @@ Three files there
 3) style.css
 one folder for images (img).
 
-
+This genaric code you dnt need to change any thing in HTML just change in DATA and new image is added in slider.
 
 var Data = [{
     "Image": "img/slider1.jpg",
