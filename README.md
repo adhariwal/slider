@@ -1,5 +1,5 @@
 # slider
-slider JavaScript
+slider HTML,css,JavaScript
 
 Three files there 
 1) index.html
