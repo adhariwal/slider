@@ -12,7 +12,7 @@ var Data = [{
     "Text": "slider Three",
 }, {
     "Image": "img/slider4.jpg", //https://ekdesigns.com image is copy from here by google
-    "Text": "slider four",
+    "Text": "slider Four",
 }]
 class Slider {
     // function which run on load of the page 
